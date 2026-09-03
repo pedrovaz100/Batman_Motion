@@ -1,0 +1,16 @@
+.reveal-text__words {
+  display: inline;
+  perspective: 600px;
+}
+
+.reveal-text__word {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 0.28em;
+}
+
+.reveal-text__wordInner {
+  display: inline-block;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+}
