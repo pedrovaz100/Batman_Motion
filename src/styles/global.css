@@ -1,0 +1,130 @@
+:root {
+  --gotham-black: #05070a;
+  --gotham-graphite: #10141a;
+  --gotham-graphite-soft: #171c24;
+  --gotham-petrol: #0d2b30;
+  --gotham-teal: #4fd8c4;
+  --gotham-teal-dim: rgba(79, 216, 196, 0.5);
+  --gotham-white: #eef4f6;
+  --gotham-white-dim: rgba(238, 244, 246, 0.72);
+  --gotham-white-faint: rgba(238, 244, 246, 0.45);
+  --gotham-border: rgba(238, 244, 246, 0.12);
+
+  --edge-pad: clamp(20px, 5vw, 64px);
+  --container-max: 1240px;
+
+  --header-height: clamp(64px, 9vh, 84px);
+
+  --fs-eyebrow: clamp(11px, 1.3vw, 14px);
+  --fs-h2: clamp(2.2rem, 5.6vw, 4.4rem);
+  --fs-h3: clamp(1.4rem, 2.6vw, 2rem);
+  --fs-body: clamp(0.95rem, 1.4vw, 1.1rem);
+
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  background: var(--gotham-black);
+  color: var(--gotham-white);
+  font-family: 'Oswald', 'Barlow Condensed', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+::selection {
+  background: rgba(79, 216, 196, 0.25);
+  color: var(--gotham-white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gotham-teal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+section[id] {
+  scroll-margin-top: var(--header-height);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--edge-pad);
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gotham-teal);
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--gotham-teal);
+  opacity: 0.8;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 12px;
+  z-index: 1000;
+  padding: 10px 18px;
+  background: var(--gotham-teal);
+  color: var(--gotham-black);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
