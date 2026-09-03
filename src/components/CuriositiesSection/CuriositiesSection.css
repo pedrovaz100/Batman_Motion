@@ -1,0 +1,132 @@
+.curiosities-section {
+  position: relative;
+  padding: clamp(90px, 14vh, 160px) 0;
+  background: var(--gotham-black);
+}
+
+.curiosities-section__header {
+  max-width: 720px;
+  margin: 0 0 clamp(40px, 6vh, 64px);
+}
+
+.curiosities-section__title {
+  display: block;
+  margin: 0 0 14px;
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: var(--gotham-white);
+}
+
+.curiosities-section__subtitle {
+  margin: 0;
+  font-size: var(--fs-body);
+  font-weight: 300;
+  color: var(--gotham-white-dim);
+}
+
+.curiosities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.2vw, 26px);
+  perspective: 1100px;
+}
+
+.curiosity-card {
+  position: relative;
+  height: 100%;
+  border-radius: 18px;
+  padding: 1px;
+  background: var(--gotham-border);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.curiosity-card.is-revealed {
+  animation: curiosity-card-edge-glow 1s ease-out;
+}
+
+@keyframes curiosity-card-edge-glow {
+  0% {
+    box-shadow: 0 0 0 rgba(79, 216, 196, 0);
+  }
+  40% {
+    box-shadow: 0 0 26px rgba(79, 216, 196, 0.32);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(79, 216, 196, 0);
+  }
+}
+
+.curiosity-card__glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(79, 216, 196, 0.65), transparent 70%);
+  transition: opacity 0.35s ease;
+}
+
+.curiosity-card:hover .curiosity-card__glow,
+.curiosity-card:focus-within .curiosity-card__glow {
+  opacity: 1;
+}
+
+.curiosity-card__content {
+  position: relative;
+  height: 100%;
+  background: linear-gradient(160deg, var(--gotham-graphite-soft), var(--gotham-graphite) 70%);
+  border-radius: 17px;
+  padding: clamp(22px, 2.6vw, 32px) clamp(20px, 2.4vw, 28px);
+}
+
+.curiosity-card__index {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gotham-teal);
+  opacity: 0.85;
+}
+
+.curiosity-card__title {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--gotham-white);
+}
+
+.curiosity-card__text {
+  margin: 0;
+  font-size: 0.94rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--gotham-white-dim);
+}
+
+@media (max-width: 980px) {
+  .curiosities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .curiosities-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curiosity-card__glow {
+    transition: none;
+  }
+
+  .curiosity-card.is-revealed {
+    animation: none;
+  }
+}
