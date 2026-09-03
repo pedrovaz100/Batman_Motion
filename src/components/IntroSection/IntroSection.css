@@ -1,0 +1,86 @@
+.intro-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(96px, 16vh, 180px) 0 clamp(80px, 12vh, 140px);
+  background: var(--gotham-black);
+}
+
+.intro-section__bg {
+  position: absolute;
+  inset: -12% -6%;
+  background: url('/images/batman-base.jpg') center 30% / cover no-repeat;
+  filter: grayscale(0.35) brightness(0.32) contrast(1.15);
+  opacity: 0.65;
+  will-change: transform;
+}
+
+.intro-section__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, var(--gotham-black), transparent 22%, transparent 78%, var(--gotham-black)),
+    linear-gradient(to right, var(--gotham-black) 0%, rgba(5, 7, 10, 0.55) 45%, rgba(5, 7, 10, 0.75) 100%);
+}
+
+.intro-section__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(120px, 0.5fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(16px, 4vw, 48px);
+}
+
+.intro-section__number {
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 600;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(238, 244, 246, 0.28);
+  justify-self: end;
+  transform: translateY(0.06em);
+}
+
+.intro-section__body {
+  max-width: 640px;
+}
+
+.intro-section__title {
+  display: block;
+  margin: 0;
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: var(--gotham-white);
+}
+
+.intro-section__line {
+  display: block;
+  width: 92px;
+  height: 2px;
+  margin: 28px 0;
+  background: linear-gradient(90deg, var(--gotham-teal), transparent);
+  transform-origin: left;
+}
+
+.intro-section__text {
+  margin: 0;
+  font-size: var(--fs-body);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--gotham-white-dim);
+  max-width: 54ch;
+}
+
+@media (max-width: 720px) {
+  .intro-section__inner {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .intro-section__number {
+    justify-self: start;
+    font-size: clamp(3.4rem, 22vw, 6rem);
+  }
+}
