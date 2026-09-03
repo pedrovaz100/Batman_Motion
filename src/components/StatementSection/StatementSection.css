@@ -1,0 +1,147 @@
+.statement-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 92vh;
+  overflow: hidden;
+  background: #030405;
+}
+
+.statement-section__bg {
+  position: absolute;
+  inset: -12% -6%;
+  background: url('/images/batman-reveal.jpg') center 38% / cover no-repeat;
+  filter: grayscale(0.5) brightness(0.22) contrast(1.1) blur(1px);
+  opacity: 0.6;
+  will-change: transform;
+}
+
+.statement-section__fog {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.statement-section__fog span {
+  position: absolute;
+  width: 46vw;
+  height: 46vw;
+  border-radius: 50%;
+  filter: blur(70px);
+  background: radial-gradient(circle, rgba(13, 43, 48, 0.55), transparent 70%);
+  animation: statement-fog-drift 26s ease-in-out infinite;
+}
+
+.statement-section__fog span:nth-child(1) {
+  top: -10%;
+  left: -8%;
+}
+
+.statement-section__fog span:nth-child(2) {
+  bottom: -18%;
+  right: -10%;
+  animation-duration: 32s;
+  animation-delay: -8s;
+  background: radial-gradient(circle, rgba(79, 216, 196, 0.14), transparent 70%);
+}
+
+.statement-section__fog span:nth-child(3) {
+  top: 30%;
+  left: 40%;
+  width: 30vw;
+  height: 30vw;
+  animation-duration: 22s;
+  animation-delay: -4s;
+}
+
+@keyframes statement-fog-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(4%, -3%) scale(1.08);
+  }
+}
+
+.statement-section__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.statement-section__particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--gotham-teal);
+  opacity: 0;
+  animation-name: statement-particle-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes statement-particle-drift {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  15% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+}
+
+.statement-section__glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 480px;
+  height: 480px;
+  margin-left: -240px;
+  margin-top: -240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79, 216, 196, 0.14), transparent 70%);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.statement-section__vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 35%, rgba(2, 3, 5, 0.75) 100%);
+}
+
+.statement-section__inner {
+  position: relative;
+  text-align: center;
+}
+
+.statement-section__text {
+  display: block;
+  margin: 0 auto;
+  max-width: 18ch;
+  font-size: clamp(1.9rem, 5.6vw, 4rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--gotham-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statement-section__fog span,
+  .statement-section__particle {
+    animation: none;
+    opacity: 0.25;
+  }
+}
